@@ -1,0 +1,16 @@
+# Node Dependencies
+node_modules/
+package-lock.json
+
+# Environment Variables
+.env
+.env.local
+.env.*
+
+# Frontend Build
+dist/
+build/
+
+# OS generated files
+.DS_Store
+Thumbs.db
