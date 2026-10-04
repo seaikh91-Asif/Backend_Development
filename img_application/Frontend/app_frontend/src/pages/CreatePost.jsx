@@ -1,15 +1,31 @@
 import { useState } from 'react';
+import axios from 'axios'; 
+import { useNavigate } from 'react-router-dom';
 
 export default function CreatePost() {
   const [image, setImage] = useState(null);
   const [caption, setCaption] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Image:', image);
-    console.log('Caption:', caption);
-    alert('Backend integration baki ache!');
-  };
+    
+    // Capital 'F' use korte hobe
+    const uploadData = new FormData();
+    
+    // React state theke data gulo append koro
+    uploadData.append("image", image); // Eta Multer er "image" field er sathe match korbe
+    uploadData.append("caption", caption);
+
+    axios.post("http://localhost:3000/create-post", uploadData)
+      .then((res) => {
+        console.log("Success:", res.data); 
+        
+      })
+      .catch((err) => {
+        console.log("Error:", err);
+        alert("Error creating post");
+      });
+};
 
   return (
     <div className="max-w-md mx-auto bg-white p-8 rounded-[3xl] shadow-[0_8px_30px_rgb(0,0,0,0.04)]">

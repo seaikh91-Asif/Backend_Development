@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios'; 
 
 export default function Feed() {
   const [posts, setPosts] = useState([
@@ -14,12 +15,25 @@ export default function Feed() {
     }
   ]);
 
+  useEffect(() => {
+  const fetchPosts = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/posts");
+      setPosts(res.data.posts); 
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    }
+  };
+
+  fetchPosts();
+}, []);
+
   return (
     <div className="flex flex-col gap-8 max-w-md mx-auto">
       {posts.map((post) => (
         <div 
           key={post._id} 
-          className="bg-white rounded-[32px] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col"
+          className="bg-white rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex flex-col"
         >
           {/* Post Image */}
           <div className="w-full h-80 bg-gray-100">
