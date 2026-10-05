@@ -12,7 +12,7 @@ export default function CreatePost() {
     // Capital 'F' use korte hobe
     const uploadData = new FormData();
     
-    // React state theke data gulo append koro
+  
     uploadData.append("image", image); // Eta Multer er "image" field er sathe match korbe
     uploadData.append("caption", caption);
 
