@@ -28,7 +28,7 @@ export default function CreatePost() {
 };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-8 rounded-[3xl] shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+    <div className="max-w-md mx-auto bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
       
       <div className="mb-8 text-center">
         <h2 className="text-2xl font-bold text-black">Upload Media</h2>
